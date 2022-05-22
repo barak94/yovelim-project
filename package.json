@@ -1,5 +1,6 @@
 {
   "name": "firebase",
+  "homepage": "https://barak94.github.io/ProjectJCE",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -27,6 +28,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -50,6 +53,7 @@
     ]
   },
   "devDependencies": {
-    "file-loader": "^6.2.0"
+    "file-loader": "^6.2.0",
+    "gh-pages": "^4.0.0"
   }
 }
