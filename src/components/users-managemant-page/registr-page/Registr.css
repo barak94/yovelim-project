@@ -1,0 +1,28 @@
+.register-form {
+  margin: auto;
+  margin-top: 20px;
+  max-width: 40%;
+  min-height: 300px;
+  border: black 2px solid;
+  border-radius: 15px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.register-form select {
+  height: 30px;
+  border: none;
+  border-bottom: black 1px solid;
+  margin-bottom: 20px;
+}
+
+.register-form a {
+  color: black;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.register-form h1 {
+  text-align: center;
+}

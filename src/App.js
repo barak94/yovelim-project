@@ -1,23 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+import { userContext } from './components/provider/userProvider'
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { useContext } from 'react'
+
+import UserManag from './components/users-managemant-page/UserManag';
+import HomePage from './components/home-page/HomePage';
+import Nav from './components/navigation/Nav';
+import Registr from './components/users-managemant-page/registr-page/Registr';
+import Footer from './components/footer/Footer';
+import About from "./components/about-page/About";
+import Contact from "./components/contact-page/Contact";
+import Events from "./components/events/events-page/Events";
+import AddEvent from './components/events/add-events-page/AddEvent';
+import EventsManage from './components/events/events-manage/EventsManage';
+import Facility from './components/facilities-page/Facility';
 
 function App() {
+
+  const { currentUser } = useContext(userContext);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <BrowserRouter>
+        <Nav />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="About" element={<About />} />
+          <Route path="Contact" element={<Contact />} />
+          <Route path="Events" element={<Events />} />
+          <Route path='events-manage' element={<EventsManage />} />
+          <Route path='users-manage' element={<UserManag />} />
+          <Route path='/users-manage/registr' element={<Registr />} />
+          <Route path='/events-manage/add-event' element={<AddEvent />} />
+          <Route path='facilities' element={<Facility />} />
+        </Routes>
+        <Footer />
+      </BrowserRouter>
     </div>
   );
 }

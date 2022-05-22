@@ -1,0 +1,33 @@
+.home-page{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.home-img{
+    margin:30px 0;
+    width: 100%;
+    
+}
+.home-img img{
+    width: 100%;
+    height: 300px;
+}
+
+.calendar-events{
+    position: relative;
+    display: flex;
+}
+
+.home-events{
+    width: 60%;
+    height: 100%;
+}
+
+.home-calendar{
+    font-family: sans-serif;
+    text-align: center;
+    width: 40%;
+    height: 500px;
+}
+

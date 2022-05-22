@@ -1,0 +1,20 @@
+.logIn-container {
+  z-index: 5;
+  position: absolute;
+  top: 5%;
+  left: 10%;
+  background-color: white;
+  max-width: 40%;
+  min-height: 300px;
+  border: black 2px solid;
+  border-radius: 15px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.logIn-container a {
+  color: black;
+  text-align: center;
+  margin-top: 10px;
+}

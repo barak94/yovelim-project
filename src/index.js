@@ -1,17 +1,28 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
+import ReactDOM from 'react-dom/client';
+import UserProvider from './components/provider/userProvider';
+import UsersProvider from './components/provider/usersProvider';
+import EventsProvider from './components/provider/eventsProvider';
+import CalendarProvider from './components/provider/calendarProvider';
+import FacilityProvider from './components/provider/facilityProvider';
 
-ReactDOM.render(
+
+const container = document.getElementById('root');
+const root = ReactDOM.createRoot(container);
+root.render(
   <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+    <CalendarProvider>
+      <FacilityProvider >
+        <UsersProvider>
+          <EventsProvider>
+            <UserProvider>
+              <App />
+            </UserProvider>
+          </EventsProvider>
+        </UsersProvider>
+      </FacilityProvider>
+    </CalendarProvider>
+  </React.StrictMode>);
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();

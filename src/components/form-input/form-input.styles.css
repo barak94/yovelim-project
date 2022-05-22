@@ -1,0 +1,16 @@
+.form-input {
+  padding: 10px;
+  height: 15px;
+  border: none;
+  border-bottom:black 1px solid;
+  margin-bottom: 20px;
+}
+
+.form-input::placeholder{
+  float: right;
+}
+
+.form-input-label {
+  font-size: medium;
+  margin-top: 20px;
+}

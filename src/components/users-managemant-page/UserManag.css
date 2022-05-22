@@ -1,0 +1,38 @@
+
+.users-container{
+    margin:15px 0; 
+    position: relative;
+}
+
+.users-box {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    width: 80%;
+    margin: auto;
+
+}
+
+.user-box {
+    box-sizing: border-box;
+    border: rgb(200, 22, 244) 1px solid;
+    border-bottom: rgb(200, 22, 244) px solid;
+    max-height: 200px;
+    padding: 15px;
+    margin: 7px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.user-box .delete-icon{
+    position:absolute;
+    bottom:5%;
+    left:5%;
+    color: red;
+}
+
+.register-container {
+    position:absolute;
+    left:0;
+    top:25%;
+}

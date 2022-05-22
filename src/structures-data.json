@@ -1,0 +1,34 @@
+[
+  {
+    "name": "שלוחת מלחה",
+    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/test-1-9bda5.appspot.com/o/images%2Ficon_menu_1.png?alt=media&token=147e948c-a0cd-4c19-bc44-e03d8f17b1aa"
+  },
+  {
+    "name": "רמת שרת דניה",
+    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/test-1-9bda5.appspot.com/o/images%2Ficon_menu_2.png?alt=media&token=9b1701fc-2fe4-4d78-827a-dbf6b941e3ce"
+  },
+  {
+    "name": "עין כרם",
+    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/test-1-9bda5.appspot.com/o/images%2Ficon_menu_6.png?alt=media&token=8083145c-d76e-48c3-937b-1da4dc20af58"
+  },
+  {
+    "name": "מרכז תרבות בית טיילור",
+    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/test-1-9bda5.appspot.com/o/images%2Ficon_menu_4.png?alt=media&token=69f09d65-e92f-4bae-9b4e-205d42630f6e"
+  },
+  {
+    "name": "מרכז ספורט בית טיילור",
+    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/test-1-9bda5.appspot.com/o/images%2Ficon_menu_4.png?alt=media&token=69f09d65-e92f-4bae-9b4e-205d42630f6e"
+  },
+  {
+    "name": "פיליפ לאון",
+    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/test-1-9bda5.appspot.com/o/images%2Ficon_menu_5.png?alt=media&token=3805be0b-2a7b-4cd6-8063-61939347dcc2"
+  },
+  {
+    "name": "בית רחל",
+    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/test-1-9bda5.appspot.com/o/images%2Ficon_menu_5.png?alt=media&token=3805be0b-2a7b-4cd6-8063-61939347dcc2"
+  },
+  {
+    "name":"המרכז הקהילתי עש הסנפלד",
+    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/test-1-9bda5.appspot.com/o/images%2Ficon_menu_3.png?alt=media&token=79197a1b-0f2f-4895-86d1-b8acca19a77d"
+  }
+]

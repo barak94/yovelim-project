@@ -1,0 +1,26 @@
+.about-container {
+    display: flex;
+    margin-top: 20px;
+    width: 100%;
+    height: 600px;
+    position: relative;
+}
+
+.backGroundPi {
+    width: 100%;
+    height: 100%;
+    filter: brightness(80%);
+    object-fit: cover;
+}
+
+.about-text {
+    position: absolute;
+    color: rgb(190, 14, 14);
+    font-size: 23px;
+}
+
+.about-text .subTitle {
+    color: black;
+    font-weight: bold;
+}
+

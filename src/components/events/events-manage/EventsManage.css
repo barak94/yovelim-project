@@ -1,0 +1,11 @@
+
+.events-container{
+    margin:15px 0; 
+    position: relative;
+}
+
+.events-container .add-event-container{
+    position:absolute;
+    left:0;
+    top:25%;
+}

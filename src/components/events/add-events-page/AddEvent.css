@@ -1,0 +1,28 @@
+
+.add-event-form{
+    margin: auto;
+    margin-top: 20px;
+    max-width: 30%;
+    min-height: 300px;
+    border: rgb(118, 110, 110) 2px solid;
+    border-radius: 15px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column; 
+  }
+
+  .add-event-form select {
+    height: 30px;
+    border: none;
+    border-bottom: black 1px solid;
+    margin-bottom: 20px;
+  }
+
+  .add-event-form a{
+    color: black;
+    text-align: center;
+    margin-top: 10px;
+  }
+  .add-event-form h1{
+    text-align: center;
+  }
