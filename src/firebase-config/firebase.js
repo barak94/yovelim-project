@@ -6,7 +6,7 @@ import { getFirestore, doc, getDoc, setDoc, collection, getDocs, deleteDoc } fro
 import { v4 } from 'uuid';
 
 const firebaseConfig = {
-fdgd
+
 };
 
 
