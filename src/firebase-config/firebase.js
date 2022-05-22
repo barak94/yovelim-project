@@ -4,7 +4,6 @@ import { getStorage, ref, uploadBytes, deleteObject } from 'firebase/storage'
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged, deleteUser } from "firebase/auth";
 import { getFirestore, doc, getDoc, setDoc, collection, getDocs, deleteDoc } from 'firebase/firestore'
 import { v4 } from 'uuid';
-import { async } from "@firebase/util";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDa-0hsJHAPlK3BbsnbJUk5IRJuhea_v7I",
