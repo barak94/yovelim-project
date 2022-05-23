@@ -4,6 +4,7 @@ import Calendar from '../calendar/Calendar'
 import EventsCard from '../events/events-card/EventsCard'
 import EventDetails from './event-details/EventDetails'
 import HeadLile from '../head-line/HeadLine'
+import Structures from './Structures/Structures'
 
 const HomePage = () => {
 
@@ -17,7 +18,7 @@ const HomePage = () => {
     setImageUrl(url);
   }
 
-  const closeDetails = ()=>{
+  const closeDetails = () => {
     setEvent(null);
     setShowDetails(false);
     setImageUrl('');
@@ -26,22 +27,21 @@ const HomePage = () => {
   return (
     <div className='home-page'>
 
-      {/* <div className="home-img">
-        <img src="https://firebasestorage.googleapis.com/v0/b/test-1-9bda5.appspot.com/o/images%2Fhomegallerypic.png?alt=media&token=a333c302-7e56-4629-b82b-268ed72c89d8" alt="תמונת בית" />
-      </div> */}
-
       <HeadLile title="אירועים שלנו" />
 
       <div className="calendar-events">
 
-        <EventsCard textButton='פרטים' buttonClass='home-event-box-button' cardClassName='home-event-box' onClickFunc={getEventDetails} />
+        <div className="home-events">
+          <EventsCard textButton='פרטים' buttonClass='home-event-box-button' cardClassName='home-event-box' onClickFunc={getEventDetails} />
+        </div>
+
         <div className="home-calendar">
           <Calendar />
         </div>
 
       </div>
 
-      {showDetails && <EventDetails event={event} imageUrl={imageUrl} onClose={closeDetails}/>}
+      {showDetails && <EventDetails event={event} imageUrl={imageUrl} onClose={closeDetails} />}
     </div>
   )
 

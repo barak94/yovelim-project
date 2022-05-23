@@ -27,7 +27,7 @@
 
 .footer-bot div{ 
     min-height: 80%;
-    min-width: 300px;
+    min-width: 25%;
     margin-top: 30px;
     border-left: white 1px solid;
     padding: 20px;
@@ -35,8 +35,10 @@
 
 .footer-bot ul{
     list-style:none;
+    padding: 0;
 
 }
+
 .facebook-link{
     color: white;
 

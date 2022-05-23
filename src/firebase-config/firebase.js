@@ -6,6 +6,12 @@ import { getFirestore, doc, getDoc, setDoc, collection, getDocs, deleteDoc } fro
 import { v4 } from 'uuid';
 
 const firebaseConfig = {
+  apiKey: "AIzaSyDa-0hsJHAPlK3BbsnbJUk5IRJuhea_v7I",
+  authDomain: "test-1-9bda5.firebaseapp.com",
+  projectId: "test-1-9bda5",
+  storageBucket: "test-1-9bda5.appspot.com",
+  messagingSenderId: "864569591523",
+  appId: "1:864569591523:web:a4ebc8ea592205628527d6"
 
 };
 

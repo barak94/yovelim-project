@@ -51,7 +51,7 @@
 
 .home-event-box-button{
     border: none;
-    width: 150px;
+    width: 60px;
     height: 35px;
     font-size: larger;
     color: white;
@@ -60,7 +60,8 @@
     background-color:  rgba(0, 0, 0, 0.3);
     position: absolute;
     bottom: 10%;
-    left:20%
+    left: 33%;
+    
 }
 
 .home-event-box-button:hover{

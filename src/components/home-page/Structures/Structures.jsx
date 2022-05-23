@@ -4,12 +4,12 @@ import STRUCTURES_DATA from '../../../structures-data.json'
 import './Structures.css'
 
 
-const Structures = ({currentUser}) => {
+const Structures = () => {
 
     const [structures, setProducts] = useState(STRUCTURES_DATA);
 
     return (
-        <div className={currentUser ? 'structures-container-user' : 'structures-container'}>
+        <div className='structures-container'>
             { structures.map((structure) => <Structure structure={structure} key={structure.name}/>)}
         </div>
     )

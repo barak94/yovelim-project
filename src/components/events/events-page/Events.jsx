@@ -3,13 +3,13 @@ import HeadLine from "../../head-line/HeadLine"
 import './Events.css'
 
 const Events = () => {
-  
+
   return (
     <>
-    <HeadLine title='לוח אירועים' />
-    <div className="events-calender">
-       <Calendar />
-    </div>
+      <div className="events-calender">
+        <HeadLine title='לוח אירועים' />
+        <Calendar />
+      </div>
     </>
   )
 }

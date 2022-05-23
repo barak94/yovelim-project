@@ -52,8 +52,8 @@ const Nav = () => {
                             aria-expanded="false"
                             placeholder="אפשרויות מנהל"
                             onChange={handleChange}
-                            options={[{ label:'ניהול משתמשים', value: 'ניהול משתמשים' },
-                            { lable:'ניהול אירועים', value: 'ניהול אירועים' }]}
+                            options={[{ label: 'ניהול משתמשים', value: 'ניהול משתמשים' },
+                            { lable: 'ניהול אירועים', value: 'ניהול אירועים' }]}
                         />}
 
                 </div>
@@ -65,20 +65,12 @@ const Nav = () => {
 
             </div >
 
-              <div className= "facilities-text">
-                <Structures currentUser={currentUser} />
+            {loginPressed && <LogIn setlogin={setLoginPressed} />}
 
-                {!currentUser && <div className="text">
-                    <h3>חזון יובלים</h3>
-                    <p>מינהל קהילתי יובלים יהיה בית פתוח לכלל הקהילה וייתן מענה לצרכים המשתנים של כל קבוצה וכל פרט בה, תוך שמירה על פלורליזם ושוויון.
-                        תושבי שכונת יובלים יהוו גורם יוזם ומשמעותי בעיצוב המרחב החינוכי, הקהילתי, התרבותי והאורבאני.
-                        החינוך הפורמאלי והבלתי פורמאלי יהוו את הליבה הערכית של השכונה ומוסדות החינוך יהיו שותפים במרקם הקהילה.
-                        מרחב יובלים יהיה נגיש לכל, לבעלי צרכים מיוחדים, לילדים, להורים ולאוכלוסייה המבוגרת.
-                        המינהל יפעל בשיתוף פעולה עם כלל הגורמים, יפתח ערבות הדדית וחברה יוזמת וחסונה.</p>
-                </div>}
+            <div className="facilities-link">
+                <Structures />
             </div>
 
-            {loginPressed && <LogIn setlogin={setLoginPressed} />}
         </>
     )
 }
