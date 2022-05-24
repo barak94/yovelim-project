@@ -6,7 +6,6 @@ import UserProvider from './components/provider/userProvider';
 import UsersProvider from './components/provider/usersProvider';
 import EventsProvider from './components/provider/eventsProvider';
 import CalendarProvider from './components/provider/calendarProvider';
-import FacilityProvider from './components/provider/facilityProvider';
 
 
 const container = document.getElementById('root');
@@ -14,7 +13,6 @@ const root = ReactDOM.createRoot(container);
 root.render(
   <React.StrictMode>
     <CalendarProvider>
-      <FacilityProvider >
         <UsersProvider>
           <EventsProvider>
             <UserProvider>
@@ -22,7 +20,6 @@ root.render(
             </UserProvider>
           </EventsProvider>
         </UsersProvider>
-      </FacilityProvider>
     </CalendarProvider>
   </React.StrictMode>);
 

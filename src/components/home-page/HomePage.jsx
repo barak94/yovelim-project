@@ -4,7 +4,6 @@ import Calendar from '../calendar/Calendar'
 import EventsCard from '../events/events-card/EventsCard'
 import EventDetails from './event-details/EventDetails'
 import HeadLile from '../head-line/HeadLine'
-import Structures from './Structures/Structures'
 
 const HomePage = () => {
 

@@ -31,7 +31,7 @@ function App() {
           <Route path='users-manage' element={<UserManag />} />
           <Route path='/users-manage/registr' element={<Registr />} />
           <Route path='/events-manage/add-event' element={<AddEvent />} />
-          <Route path='facilities' element={<Facility />} />
+          <Route path='facilities/:name' element={<Facility />} />
         </Routes>
         <Footer />
       </BrowserRouter>

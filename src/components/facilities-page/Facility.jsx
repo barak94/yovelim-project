@@ -1,20 +1,20 @@
-import React, { useState, useContext } from 'react'
-import { facilityContext } from '../provider/facilityProvider'
+import React, { useState } from 'react'
 import { getDocByName } from '../../firebase-config/firebase'
 import HeadLine from '../head-line/HeadLine'
+import { useParams } from 'react-router-dom'
 
 import './Facility.css'
 
 const Facility = () => {
 
     const [rooms, setRooms] = useState([]);
-    const { facility } = useContext(facilityContext);
+    const { name } = useParams();
 
 
     const facilitiesCollection = async () => {
         try {
 
-            const snapShot = (await getDocByName("rooms", facility)).data();
+            const snapShot = (await getDocByName("rooms", name)).data();
             setRooms(snapShot.rooms);
         }
         catch (error) {
@@ -26,7 +26,7 @@ const Facility = () => {
 
     return (
         <>
-            <HeadLine title={`החדרים של ${facility}`} />
+            <HeadLine title={`החדרים של ${name}`} />
             <div className="items">
                 {rooms.map((room) => <div key={room.name} className="item">
                     <img src={room.imageUrl} alt={room.name} />
