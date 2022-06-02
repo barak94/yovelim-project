@@ -1,12 +1,12 @@
 .confirm-delete{
     display: flex;
-    position: absolute;
+    position: fixed;
     flex-direction: column;
     background-color: aliceblue;
     width: 300px;
     height: 200px;
     text-align: center;
-    top:30%;
+    top:25%;
     left: 35%;
     border: black 2px solid;
     box-shadow: 15px;

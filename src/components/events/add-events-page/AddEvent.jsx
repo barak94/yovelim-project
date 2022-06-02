@@ -79,7 +79,7 @@ const AddEvent = () => {
                 <option value="מרכז ספורט בית טיילור">מרכז ספורט בית טיילור</option>
                 <option value="בית רחל">בית רחל</option>
                 <option value="פיליפ לאון">פיליפ לאון</option>
-                <option value="מרכז ספורט בית טיילור">המרכז הקהילתי עש הסנפלד</option>
+                <option value="המרכז הקהילתי עש הסנפלד">המרכז הקהילתי עש הסנפלד</option>
             </select>
 
             <textarea placeholder='תיאור אירוע...' value={data} name='data' onChange={change} />

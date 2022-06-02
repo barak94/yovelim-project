@@ -1,9 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import EventsCard from '../events-card/EventsCard'
 import ConfirmRemove from '../../confirm-remove/ConfirmRemove'
 import Button from '../../button/Button'
 import { useNavigate } from 'react-router-dom'
 import { deleteDocRef } from '../../../firebase-config/firebase'
+import { eventsContext } from '../../provider/eventsProvider'
 import './EventsManage.css'
 
 
@@ -12,6 +13,7 @@ const EventsManage = () => {
     const navigate = useNavigate();
     const [deleted, setDeleted] = useState(false);
     const [docId, setDocId] = useState('');
+    const { setEvents } = useContext(eventsContext);
 
 
     const getDocInfo = (event) => {
@@ -25,6 +27,7 @@ const EventsManage = () => {
 
     const deleteEvent = async () => {
         await deleteDocRef('events', docId);
+        setEvents(prev => prev.filter((event)=> event.id !== docId));
         resetInfo();
     }
 
@@ -37,12 +40,10 @@ const EventsManage = () => {
             <div className='events-container'>
                 <EventsCard textButton='מחק אירוע' cardClassName='manage-event-box' buttonClass='manage-event-box-button' onClickFunc={getDocInfo} />
 
-                <div className="add-event-container">
-                    <Button className='add-event' type='button' text='צור אירוע' onClick={addEvent} />
-                </div>
+                <Button className='add-event' type='button' text='צור אירוע' onClick={addEvent} />
             </div>
 
-            {deleted && <ConfirmRemove onDelete={deleteEvent}  onReset={resetInfo}/>}
+            {deleted && <ConfirmRemove onDelete={deleteEvent} onReset={resetInfo} />}
         </>
     )
 }

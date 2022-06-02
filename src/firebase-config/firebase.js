@@ -1,7 +1,9 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getStorage, ref, uploadBytes, deleteObject } from 'firebase/storage'
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged, deleteUser } from "firebase/auth";
+// import { UserInfo } from "firebase/auth";
+import { getStorage, ref, uploadBytes } from 'firebase/storage'
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "firebase/auth";
+
 import { getFirestore, doc, getDoc, setDoc, collection, getDocs, deleteDoc } from 'firebase/firestore'
 import { v4 } from 'uuid';
 
@@ -29,7 +31,13 @@ export const creatAuthUserWithEmailAndPassword = async (email, password) => {
 
   if (!email || !password) return;
 
-  return await createUserWithEmailAndPassword(auth, email, password);
+  const current = auth.currentUser;
+
+  const user = await createUserWithEmailAndPassword(auth, email, password);
+
+  await auth.updateCurrentUser(current);
+
+  return user;
 }
 
 export const createUser = async (user, userInfo) => {
@@ -41,11 +49,13 @@ export const createUser = async (user, userInfo) => {
 
   if (!getUserFromDB.exists()) {
 
+    const {name, email, phoneNumber, role, extension, isAdmin, BuildManager}  = userInfo;
+
     const date = new Date();
 
     try {
 
-      await setDoc(userDocRef, { ...userInfo, date });
+      await setDoc(userDocRef, { name, email, phoneNumber, role, extension, isAdmin, BuildManager, date });
 
     } catch (error) {
 
@@ -105,13 +115,13 @@ export const logInWithEmailAndPassword = async (email, password) => {
   return await signInWithEmailAndPassword(auth, email, password);
 }
 
-export const deleteAuthUser = async (userInfo, currentUser) => {
-  if (!userInfo || !currentUser) return;
+export const deleteAuthUser = async (userInfo) => {
+  if (!userInfo) return;
 
-  await logInWithEmailAndPassword(userInfo.email, userInfo.password);
-  await deleteUser(auth.currentUser);
-  await deleteDocRef('users', userInfo.id);
-  await logInWithEmailAndPassword(currentUser.email, currentUser.password);
+  // await logInWithEmailAndPassword(userInfo.email, userInfo.password);
+  // await deleteUser(auth.currentUser);
+  await deleteDocRef('users', userInfo.id).then(()=> {console.log("User has been successfully deleted")});
+  // await logInWithEmailAndPassword(currentUser.email, currentUser.password);
 
 }
 
