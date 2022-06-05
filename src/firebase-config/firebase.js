@@ -100,13 +100,12 @@ export const getCollection = async (collectionName) => {
 
   const collectionRef = collection(db, collectionName);
 
-  const allDocs = await getDocs(collectionRef)
+  const allDocs = await getDocs(collectionRef);
 
   const a = allDocs.docs.map((doc) => { return { ...doc.data(), id: doc.id } });
 
   return a;
 }
-
 
 export const logInWithEmailAndPassword = async (email, password) => {
 
@@ -156,3 +155,4 @@ export const getDocByName = async (collectionName, docName) => {
   return await getDoc(docRef);
 
 }
+

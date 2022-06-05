@@ -1,0 +1,33 @@
+.requests-container{
+    width: 80%;
+    margin: auto;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 3%;
+}
+
+.request-card{
+    width: 49%;
+    height: 200px;
+    position: relative;
+    box-shadow: 5px 7px rgba(168, 136, 161, 0.5);
+    margin: auto;
+    background-color: rgba(232, 157, 241, 0.2);
+    margin-top:15px;
+    border-radius:10px ;
+}
+
+.request-button{
+    position: absolute;
+    border: none;
+    left: 1%;
+    bottom: 1%;
+    width: 80px;
+    height: 25px;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: rgba(42, 42, 178, 0.6);
+
+}

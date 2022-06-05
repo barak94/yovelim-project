@@ -13,6 +13,7 @@ import Events from "./components/events/events-page/Events";
 import AddEvent from './components/events/add-events-page/AddEvent';
 import EventsManage from './components/events/events-manage/EventsManage';
 import Facility from './components/facilities-page/Facility';
+import RequestsManage from './components/requests-manage/RequestsManage';
 
 function App() {
 
@@ -29,6 +30,7 @@ function App() {
           <Route path="Events" element={<Events />} />
           <Route path='events-manage' element={<EventsManage />} />
           <Route path='users-manage' element={<UserManag />} />
+          <Route path='requests-manage' element={<RequestsManage />} />
           <Route path='/users-manage/registr' element={<Registr />} />
           <Route path='/events-manage/add-event' element={<AddEvent />} />
           <Route path='facilities/:name' element={<Facility />} />

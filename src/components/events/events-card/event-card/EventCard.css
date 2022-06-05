@@ -9,7 +9,7 @@
 }
 
 .home-event-box{
-    width: 180px;
+    width: 25%;
     height: 280px;
     display: flex;
     flex-direction: column;

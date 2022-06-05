@@ -26,7 +26,7 @@ const Contact = () => {
     
       await createDoc(formInput, 'requests');
       setFormInput(contactInfo);
-      // navigate('../requests-manage');
+      navigate('../');
 
   } catch (error) {
       console.log(error.message);

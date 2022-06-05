@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { getDocByName } from '../../firebase-config/firebase'
 import HeadLine from '../head-line/HeadLine'
 import { useParams } from 'react-router-dom'
@@ -11,18 +11,20 @@ const Facility = () => {
     const { name } = useParams();
 
 
-    const facilitiesCollection = async () => {
-        try {
+    useEffect(() => {
+        const facilitiesCollection = async () => {
+            try {
 
-            const snapShot = (await getDocByName("rooms", name)).data();
-            setRooms(snapShot.rooms);
+                const snapShot = (await getDocByName("rooms", name)).data();
+                setRooms(snapShot.rooms);
+            }
+            catch (error) {
+                console.log(error.message);
+            }
         }
-        catch (error) {
-            console.log(error.message);
-        }
-    }
 
-    facilitiesCollection();
+        facilitiesCollection();
+    }, []);
 
     return (
         <>

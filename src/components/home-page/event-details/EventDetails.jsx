@@ -3,6 +3,9 @@ import {IoMdCloseCircleOutline} from 'react-icons/io'
 import './EventDetails.css'
 
 const EventDetails = ({event, imageUrl, onClose}) => {
+
+  const date = new Date(event.start);
+
   return (
     <div className="event-details">
 
@@ -12,7 +15,7 @@ const EventDetails = ({event, imageUrl, onClose}) => {
       <div>
         <span className='title'>ביום</span>
         <br />
-        <span>{event.day} {event.start} </span>
+        <span>{event.day} {`${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`} </span>
         <br />
         <br />
         <span className='title'>שעה</span>
