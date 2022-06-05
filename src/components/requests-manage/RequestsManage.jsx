@@ -44,14 +44,10 @@ const RequestsManage = () => {
                     {`התקבל ב- ${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`}
 
                     <Button text="מחק בקשה" className='request-button' onClick={() => { deletRequest(request.id) }} />
-
                 </div>
-
             })}
 
-
         </div>)
-
 }
 
 export default RequestsManage
