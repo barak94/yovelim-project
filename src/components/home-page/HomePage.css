@@ -1,6 +1,7 @@
 .home-page{
     display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
     position: relative;
 }
 
@@ -28,7 +29,6 @@
     font-family: sans-serif;
     text-align: center;
     width: 50%;
-    height: 80%;
 }
 
 .facilities-link{

@@ -1,10 +1,9 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-// import { UserInfo } from "firebase/auth";
-import { getStorage, ref, uploadBytes } from 'firebase/storage'
+import { getDownloadURL, getStorage, ref, uploadBytes } from 'firebase/storage'
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "firebase/auth";
 
-import { getFirestore, doc, getDoc, setDoc, collection, getDocs, deleteDoc } from 'firebase/firestore'
+import { getFirestore, doc, getDoc, setDoc, collection, getDocs, deleteDoc, updateDoc, arrayUnion, arrayRemove } from 'firebase/firestore'
 import { v4 } from 'uuid';
 
 const firebaseConfig = {
@@ -49,7 +48,7 @@ export const createUser = async (user, userInfo) => {
 
   if (!getUserFromDB.exists()) {
 
-    const {name, email, phoneNumber, role, extension, isAdmin, BuildManager}  = userInfo;
+    const { name, email, phoneNumber, role, extension, isAdmin, BuildManager } = userInfo;
 
     const date = new Date();
 
@@ -119,7 +118,7 @@ export const deleteAuthUser = async (userInfo) => {
 
   // await logInWithEmailAndPassword(userInfo.email, userInfo.password);
   // await deleteUser(auth.currentUser);
-  await deleteDocRef('users', userInfo.id).then(()=> {console.log("User has been successfully deleted")});
+  await deleteDocRef('users', userInfo.id).then(() => { console.log("User has been successfully deleted") });
   // await logInWithEmailAndPassword(currentUser.email, currentUser.password);
 
 }
@@ -142,17 +141,39 @@ export const addToStorage = async (file) => {
 
   const storageRef = ref(storage, url);
 
-  uploadBytes(storageRef, file).then((snapshot) => {
+  await uploadBytes(storageRef, file).then((snapshot) => {
     console.log('Uploaded a blob or file!');
-  });
+  }).catch((error) => { console.log(error) });
+
+  return await getDownloadURL(storageRef);
 
 }
 
 export const getDocByName = async (collectionName, docName) => {
 
-  const docRef = doc(db, collectionName,docName);
+  const docRef = doc(db, collectionName, docName);
 
   return await getDoc(docRef);
 
 }
+
+export const updateExistingDoc = async (collectionName, docId, docInfo) => {
+
+  const washingtonRef = doc(db, collectionName, docId);
+
+  await updateDoc(washingtonRef, {
+    rooms: arrayUnion(docInfo)
+  });
+}
+
+export const removeExistingDog = async (collectionName, docInfo) => {
+
+  const washingtonRef = doc(db, collectionName, docInfo.extension);
+
+  await updateDoc(washingtonRef, {
+    rooms: arrayRemove(docInfo)
+  });
+}
+
+
 

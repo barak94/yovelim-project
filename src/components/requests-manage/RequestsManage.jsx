@@ -41,6 +41,11 @@ const RequestsManage = () => {
             {requests.map(request => {
                 const date = request.date.toDate();
                 return <div className="request-card" key={request.id}>
+                    <p>שם המבקש: {request.name}</p>
+                    <p>דוא"ל: {request.email}</p>
+                    <p>פלפון: {request.phone}</p>
+                    <p>{request.extension}</p>
+                    <p>פרטי בקשה: {request.data}</p>
                     {`התקבל ב- ${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`}
 
                     <Button text="מחק בקשה" className='request-button' onClick={() => { deletRequest(request.id) }} />

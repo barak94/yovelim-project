@@ -13,3 +13,19 @@
     height: 500px;
 
 }
+
+.contand-details{
+    display: flex;
+}
+
+.details{
+    display: flex;
+    flex-direction: column;
+    width: 35%;
+    text-align: center;
+    align-items: center;
+}
+.details img{
+    width: 400px;
+    height: 250px;
+}

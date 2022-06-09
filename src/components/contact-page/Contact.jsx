@@ -2,16 +2,18 @@ import { useState } from 'react'
 import FormInput from '../form-input/form-input-component'
 import HeadLile from '../head-line/HeadLine'
 import Button from '../button/Button'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams, useLocation } from 'react-router-dom'
 import { createDoc } from '../../firebase-config/firebase'
 import './Contact.css'
 
-const contactInfo = { name: '', email: '', phone: '', address: '', data: '', extension: ''}
+const contactInfo = { name: '', email: '', phone: '', address: '', data: '', extension: '' }
 
 const Contact = () => {
 
   const [formInput, setFormInput] = useState(contactInfo);
-  const { name, email, phone, address, data} = formInput;
+  const { name, email, phone, address, data } = formInput;
+  const { fname, roomName } = useParams();
+  const { state } = useLocation();
   const navigate = useNavigate();
 
   const change = (e) => {
@@ -23,14 +25,14 @@ const Contact = () => {
     e.preventDefault();
 
     try {
-    
-      await createDoc(formInput, 'requests');
+
+      await createDoc({...formInput, extension:fname }, 'requests');
       setFormInput(contactInfo);
       navigate('../');
 
-  } catch (error) {
+    } catch (error) {
       console.log(error.message);
-  }
+    }
 
   }
 
@@ -40,24 +42,32 @@ const Contact = () => {
 
       <HeadLile title='צור קשר' />
 
-      <form className='contact-form' onSubmit={submit}>
+      <div className="contand-details">
 
-        <h4>מלאו פרטים ונחזור אליכם בהקדם:</h4>
+        <form className='contact-form' onSubmit={submit}>
 
-        <FormInput type="text" placeholder='שם מלא...' value={name} name='name' onChange={change} required />
+          <h4>מלאו פרטים ונחזור אליכם בהקדם:</h4>
 
-        <FormInput type="email" placeholder='דואר אלקטרוני...' value={email} name='email' onChange={change} required />
+          <FormInput type="text" placeholder='שם מלא...' value={name} name='name' onChange={change} required />
 
-        <FormInput type="text" placeholder='טלפון/נייד...' value={phone} name='phone' onChange={change} required />
+          <FormInput type="email" placeholder='דואר אלקטרוני...' value={email} name='email' onChange={change} required />
 
-        <FormInput type="text" placeholder='כתובת...' value={address} name='address' onChange={change}/>
+          <FormInput type="text" placeholder='טלפון/נייד...' value={phone} name='phone' onChange={change} required />
 
-        <textarea placeholder='פרטי פניה...' value={data} name='data' onChange={change} required/>
+          <FormInput type="text" placeholder='כתובת...' value={address} name='address' onChange={change} />
 
-        <Button className="contact-button" type="submit" text="שלח פניה" />
+          <textarea placeholder='פרטי פניה...' value={data} name='data' onChange={change} required />
 
-      </form>
+          <Button className="contact-button" type="submit" text="שלח פניה" />
 
+        </form>
+
+        {state && <div className="details">
+          <h3>{fname}</h3>
+          <h3>{roomName}</h3>
+            <img src={state.image} alt="room" />
+        </div>}
+      </div>
     </div>
   )
 }

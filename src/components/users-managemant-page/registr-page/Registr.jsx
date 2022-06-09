@@ -3,6 +3,7 @@ import React, { useState, useContext } from 'react'
 import { usersContext } from '../../provider/usersProvider'
 import { useNavigate } from 'react-router-dom'
 import FormInput from '../../form-input/form-input-component'
+import Select from '../../select/Select'
 import Button from '../../button/Button'
 import './Registr.css'
 
@@ -59,18 +60,7 @@ const Registr = () => {
 
       <FormInput type="text" placeholder='תפקיד...' value={role} name='role' onChange={change} required />
 
-
-      <select value={extension} name='extension' onChange={change}>
-        <option value="">שלוחה</option>
-        <option value="שלוחת מלחה" name='שלוחת מלחה' >שלוחת מלחה</option>
-        <option value="רמת שרת דניה">רמת שרת דניה</option>
-        <option value="עין כרם">עין כרם</option>
-        <option value="מרכז תרבות בית טיילור">מרכז תרבות בית טיילור</option>
-        <option value="מרכז ספורט בית טיילור">מרכז ספורט בית טיילור</option>
-        <option value="בית רחל">בית רחל</option>
-        <option value="פיליפ לאון">פיליפ לאון</option>
-        <option value="המרכז הקהילתי עש הסנפלד">המרכז הקהילתי עש הסנפלד</option>
-      </select>
+      <Select value={extension} name='extension' onChange={change}/>
 
       <FormInput type="password" placeholder='סיסמא...' value={password} name='password' onChange={change} required />
 

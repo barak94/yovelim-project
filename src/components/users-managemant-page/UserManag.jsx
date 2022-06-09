@@ -25,7 +25,7 @@ const UserManag = () => {
   const deleteUser = async () => {
 
     await deleteAuthUser(userInfo);
-    setUsers(prev => prev.filter((user)=> user.email !== userInfo.email))
+    setUsers(prev => prev.filter((user) => user.email !== userInfo.email))
     resetInfo();
   }
 
@@ -40,21 +40,21 @@ const UserManag = () => {
       <div className='users-container' >
         <div className='users-box'>
           {users.map((user) => {
-       
-              return <div className='user-box' key={user.email} >
-                <h3>{user.name}</h3>
-                <span>דוא"ל: {user.email}</span>
-                <span>תפקיד: {user.role}</span>
-                <span>שלוחה: {user.extension}</span>
-                <span>טלפון: {user.phoneNumber}</span>
-                <AiFillDelete className='delete-icon' onDoubleClick={() => { setUserInfo(user); setDeleted(true); }} />
-              </div>
-          
+
+            return <div className='user-box' key={user.email} >
+              <h3>{user.name}</h3>
+              <span>דוא"ל: {user.email}</span>
+              <span>תפקיד: {user.role}</span>
+              <span>שלוחה: {user.extension}</span>
+              <span>טלפון: {user.phoneNumber}</span>
+              <AiFillDelete className='delete-icon' onDoubleClick={() => { setUserInfo(user); setDeleted(true); }} />
+            </div>
+
           })}
         </div>
 
-          <Button className='add-user' type='button' text='רישום עובד' onClick={addUser} />
-      
+        <Button className='add-user' type='button' text='רישום עובד' onClick={addUser} />
+
       </div>
 
       {deleted && <ConfirmRemove onDelete={deleteUser} onReset={resetInfo} />}

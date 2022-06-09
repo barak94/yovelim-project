@@ -3,7 +3,7 @@ button{
 }
 
 
-.log-in-button, .register-button, .add-event-button {
+.log-in-button, .register-button, .add-event-button, .add-room-button {
     min-width: 165px;
     width: auto;
     letter-spacing: 0.5px;
@@ -28,7 +28,7 @@ button{
     color: black;
 }
 
-.add-user, .add-event{
+.add-user, .add-event, .add-room{
     background-color: rgb(209, 163, 232);
     border: none;
     width: 150px;

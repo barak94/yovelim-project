@@ -11,10 +11,10 @@ const HomePage = () => {
   const [imageUrl, setImageUrl] = useState('');
   const [showDetails, setShowDetails] = useState(null);
 
-  const getEventDetails = (event, url) => {
+  const getEventDetails = (event) => {
     setEvent(event);
     setShowDetails(true);
-    setImageUrl(url);
+    setImageUrl(event.imageUrl);
   }
 
   const closeDetails = () => {

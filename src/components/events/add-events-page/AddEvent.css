@@ -11,18 +11,6 @@
     flex-direction: column; 
   }
 
-  .add-event-form select {
-    height: 30px;
-    border: none;
-    border-bottom: black 1px solid;
-    margin-bottom: 20px;
-  }
-
-  .add-event-form a{
-    color: black;
-    text-align: center;
-    margin-top: 10px;
-  }
   .add-event-form h1{
     text-align: center;
   }

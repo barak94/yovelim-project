@@ -10,19 +10,6 @@
   flex-direction: column;
 }
 
-.register-form select {
-  height: 30px;
-  border: none;
-  border-bottom: black 1px solid;
-  margin-bottom: 20px;
-}
-
-.register-form a {
-  color: black;
-  text-align: center;
-  margin-top: 10px;
-}
-
 .register-form h1 {
   text-align: center;
 }

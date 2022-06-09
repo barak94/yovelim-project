@@ -43,7 +43,7 @@ const Nav = () => {
                     <Link to="Events" className='nav-link' >
                         לוח ארועים
                     </Link>
-                    <Link to="Contact" className='nav-link'>
+                    <Link to="Contact/nav/''" className='nav-link'>
                         צור קשר
                     </Link>
                     {currentUser && (currentUser.isAdmin || currentUser.BuildManager) &&
