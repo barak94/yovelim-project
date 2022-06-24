@@ -29,12 +29,12 @@ function App() {
           <Route path="About" element={<About />} />
           <Route path="Contact/:fname/:roomName" element={<Contact />} />
           <Route path="Events" element={<Events />} />
-          {currentUser && (currentUser.isAdmin || currentUser.BuildManager) && <Route path='events-manage' element={<EventsManage />} />}
-          {currentUser && (currentUser.isAdmin || currentUser.BuildManager) && <Route path='users-manage' element={<UserManag />} />}
+          {currentUser && (currentUser.isAdmin || currentUser.BuildManager) && <Route path='events-manage' element={<EventsManage currentUser={currentUser} />} />}
+          {currentUser && (currentUser.isAdmin || currentUser.BuildManager) && <Route path='users-manage' element={<UserManag currentUser={currentUser} />} />}
+          {currentUser && (currentUser.isAdmin || currentUser.BuildManager) && <Route path='requests-manage' element={<RequestsManage currentUser={currentUser} />} />}
           {currentUser && (currentUser.isAdmin || currentUser.BuildManager) && <Route path='add-room' element={<AddRoom />} />}
-          {currentUser && (currentUser.isAdmin || currentUser.BuildManager) && <Route path='requests-manage' element={<RequestsManage />} />}
-          {currentUser && (currentUser.isAdmin || currentUser.BuildManager) && <Route path='/users-manage/registr' element={<Registr />} />}
-          {currentUser && (currentUser.isAdmin || currentUser.BuildManager) && <Route path='/events-manage/add-event' element={<AddEvent />} />}
+          {currentUser && (currentUser.isAdmin || currentUser.BuildManager) && <Route path='users-manage/registr' element={<Registr />} />}
+          {currentUser && (currentUser.isAdmin || currentUser.BuildManager) && <Route path='events-manage/add-event' element={<AddEvent />} />}
           <Route path='facilities/:name' element={<Facility />} />
         </Routes>
         <Footer />

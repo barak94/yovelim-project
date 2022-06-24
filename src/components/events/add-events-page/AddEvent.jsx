@@ -1,7 +1,7 @@
 import { createDoc, addToStorage } from '../../../firebase-config/firebase'
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-
+import { userContext } from '../../provider/userProvider'
 import { useContext } from 'react'
 import { eventsContext } from '../../provider/eventsProvider'
 import FormInput from "../../form-input/form-input-component"
@@ -19,6 +19,7 @@ const AddEvent = () => {
     const { title, start, day, eventNumber, extension, time, data } = formInput;
     const { setEvents } = useContext(eventsContext);
     const navigate = useNavigate();
+    const { currentUser } = useContext(userContext);
 
 
     const change = (e) => {
@@ -37,20 +38,26 @@ const AddEvent = () => {
 
         const { title, start } = formInput;
 
-        try {
-          
-            const url = await addToStorage(file);
-            setFormInput({ ...formInput, imageUrl:url});
-            await createDoc({...formInput, imageUrl:url}, 'events');
-            await createDoc({ title, start }, 'calendar');
-            setEvents(prev => [...prev, formInput])
-            setFormInput(eventInfo);
-            setFile(null);
-            navigate('../events-manage');
+        if (currentUser.isAdmin || (currentUser.BuildManager && currentUser.extension === extension)) {
 
-        } catch (error) {
-            console.log(error.message);
+            try {
+
+                const url = await addToStorage(file);
+                setFormInput({ ...formInput, imageUrl: url });
+                await createDoc({ ...formInput, imageUrl: url }, 'events');
+                await createDoc({ title, start }, 'calendar');
+                setEvents(prev => [...prev, formInput])
+                setFormInput(eventInfo);
+                setFile(null);
+                navigate('../events-manage');
+
+            } catch (error) {
+                console.log(error.message);
+            }
+        }else{
+            alert("No permission to add event");
         }
+
     }
 
 

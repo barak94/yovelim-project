@@ -12,14 +12,14 @@ const container = document.getElementById('root');
 const root = ReactDOM.createRoot(container);
 root.render(
   <React.StrictMode>
-    <CalendarProvider>
+    <UserProvider>
+      <CalendarProvider>
         <UsersProvider>
           <EventsProvider>
-            <UserProvider>
-              <App />
-            </UserProvider>
+            <App />
           </EventsProvider>
         </UsersProvider>
-    </CalendarProvider>
+      </CalendarProvider>
+    </UserProvider>
   </React.StrictMode>);
 

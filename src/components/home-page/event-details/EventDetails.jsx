@@ -1,4 +1,3 @@
-import { Container } from '@material-ui/core';
 import React from 'react'
 import { IoMdCloseCircleOutline } from 'react-icons/io'
 import './EventDetails.css'

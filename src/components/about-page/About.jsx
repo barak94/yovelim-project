@@ -6,10 +6,8 @@ const About = () => {
 
     return (
         <>
-
-            <HeadLile title="קצת עלינו" />
-
             <div className="about-container">
+                <HeadLile title="קצת עלינו" />
 
                 <div className="about-text">
                     אנחנו מנהל קהילתי יובלים, ומטרתנו העיקרית היא ניהול מרכז/מינהל קהילתי בקרית היובל, רמת שרת, עין כרם בירושלים בהתאם להחלטות הרשות ובתיאום עם החברה.

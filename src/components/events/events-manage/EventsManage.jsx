@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import EventsCard from '../events-card/EventsCard'
 import ConfirmRemove from '../../confirm-remove/ConfirmRemove'
 import Button from '../../button/Button'
@@ -8,13 +8,23 @@ import { eventsContext } from '../../provider/eventsProvider'
 import './EventsManage.css'
 
 
-const EventsManage = () => {
+const EventsManage = ({ currentUser }) => {
 
     const navigate = useNavigate();
     const [deleted, setDeleted] = useState(false);
     const [docId, setDocId] = useState('');
-    const { setEvents } = useContext(eventsContext);
+    const [myEvent, setMyEvents] = useState([]);
+    const { events, setEvents } = useContext(eventsContext);
 
+    useEffect(() => {
+
+        setMyEvents(events);
+
+        if (currentUser !== null && currentUser.BuildManager && !currentUser.isAdmin) {
+            setMyEvents(events.filter((item) => currentUser.extension === item.extension));
+        }
+
+    }, [events, currentUser]);
 
     const getDocInfo = (event) => {
         setDocId(event.id);
@@ -27,7 +37,7 @@ const EventsManage = () => {
 
     const deleteEvent = async () => {
         await deleteDocRef('events', docId);
-        setEvents(prev => prev.filter((event)=> event.id !== docId));
+        setEvents(prev => prev.filter((event) => event.id !== docId));
         resetInfo();
     }
 
@@ -38,7 +48,7 @@ const EventsManage = () => {
     return (
         <>
             <div className='events-container'>
-                <EventsCard textButton='מחק אירוע' cardClassName='manage-event-box' buttonClass='manage-event-box-button' onClickFunc={getDocInfo} />
+                <EventsCard events={myEvent} textButton='מחק אירוע' cardClassName='manage-event-box' buttonClass='manage-event-box-button' onClickFunc={getDocInfo} />
 
                 <Button className='add-event' type='button' text='צור אירוע' onClick={addEvent} />
             </div>

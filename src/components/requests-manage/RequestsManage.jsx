@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import { getCollection, deleteDocRef } from '../../firebase-config/firebase'
+
 import Button from '../button/Button'
 import './RequestsManage.css'
 
-const RequestsManage = () => {
+const RequestsManage = ({ currentUser }) => {
 
     const [requests, setRequests] = useState([]);
 
@@ -13,17 +14,20 @@ const RequestsManage = () => {
 
             try {
                 const collection = await getCollection('requests');
+                collection.sort((a, b) => a.date.toDate() - b.date.toDate());
 
-                setRequests(collection);
+                if (currentUser !== null && currentUser.BuildManager && !currentUser.isAdmin) {
+                    setRequests(collection.filter((item) => currentUser.extension === item.extension));
+                } else {
+                    setRequests(collection);
+                }
             } catch (error) {
-
                 console.log(error);
             }
         }
 
         requestCollection();
-
-    }, []);
+    }, [currentUser]);
 
     const deletRequest = async (id) => {
 
@@ -35,6 +39,8 @@ const RequestsManage = () => {
         }
 
     }
+
+
 
     return (
         <div className="requests-container">

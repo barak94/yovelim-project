@@ -1,13 +1,20 @@
 .about-container {
     display: flex;
     margin-top: 20px;
-    width: 100%;
+    flex-direction: column;
+    width: 90%;
+    margin: auto;
+    border-radius: 5px;
+    border: rgb(163, 163, 249) 3px solid;
+    padding: 15px;
+    box-shadow: 5px 7px 5px 7px rgba(168, 136, 161, 0.2);
 }
 
 
 .about-text {
-    color: rgb(190, 14, 14);
-    font-size: 23px;
+    color: rgb(122, 30, 128);
+    font-size: 17px;
+    font-style: italic;
 }
 
 .about-text .subTitle {

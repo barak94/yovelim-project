@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import { usersContext } from '../provider/usersProvider'
 import "./UserManag.css";
 import { AiFillDelete } from 'react-icons/ai';
@@ -8,12 +8,23 @@ import { useNavigate } from 'react-router-dom'
 import { deleteAuthUser } from '../../firebase-config/firebase';
 
 
-const UserManag = () => {
+const UserManag = ({ currentUser }) => {
 
   const { users, setUsers } = useContext(usersContext);
   const [deleted, setDeleted] = useState(false);
+  const [myUser, setMyUser] = useState([]);
   const [userInfo, setUserInfo] = useState(null);
 
+
+  useEffect(() => {
+
+    setMyUser(users);
+
+    if (currentUser !== null && currentUser.BuildManager && !currentUser.isAdmin) {
+      setMyUser(users.filter((item) => currentUser.extension === item.extension));
+    }
+
+  }, [users, currentUser]);
 
   const navigate = useNavigate();
 
@@ -39,7 +50,7 @@ const UserManag = () => {
     <>
       <div className='users-container' >
         <div className='users-box'>
-          {users.map((user) => {
+          {myUser.map((user) => {
 
             return <div className='user-box' key={user.email} >
               <h3>{user.name}</h3>

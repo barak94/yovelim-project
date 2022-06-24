@@ -1,6 +1,7 @@
 import { creatAuthUserWithEmailAndPassword, createUser } from '../../../firebase-config/firebase'
 import React, { useState, useContext } from 'react'
 import { usersContext } from '../../provider/usersProvider'
+import { userContext } from '../../provider/userProvider'
 import { useNavigate } from 'react-router-dom'
 import FormInput from '../../form-input/form-input-component'
 import Select from '../../select/Select'
@@ -15,6 +16,7 @@ const Registr = () => {
   const [formInput, setFormInput] = useState(userInfo);
   const { name, email, phoneNumber, role, extension, password, ConfirmPassword, isAdmin, BuildManager } = formInput;
   const navigate = useNavigate();
+  const { currentUser } = useContext(userContext);
 
   const { setUsers } = useContext(usersContext);
 
@@ -31,18 +33,23 @@ const Registr = () => {
       return;
     }
 
-    try {
+    if (currentUser.isAdmin || (currentUser.BuildManager && currentUser.extension === extension)) {
 
-      const { user } = await creatAuthUserWithEmailAndPassword(email, password);
-      await createUser(user, formInput);
-      setUsers(prev => [...prev, formInput]);
-      setFormInput(userInfo);
-      navigate('../users-manage');
+      try {
 
-    } catch (error) {
-      if (error.code === 'auth/email-already-in-use')
-        alert("user already in use");
+        const { user } = await creatAuthUserWithEmailAndPassword(email, password);
+        await createUser(user, formInput);
+        setUsers(prev => [...prev, formInput]);
+        setFormInput(userInfo);
+        navigate('../users-manage');
 
+      } catch (error) {
+        if (error.code === 'auth/email-already-in-use')
+          alert("user already in use");
+
+      }
+    } else {
+      alert("No permission to register a user");
     }
 
   }
@@ -60,7 +67,7 @@ const Registr = () => {
 
       <FormInput type="text" placeholder='תפקיד...' value={role} name='role' onChange={change} required />
 
-      <Select value={extension} name='extension' onChange={change}/>
+      <Select value={extension} name='extension' onChange={change} />
 
       <FormInput type="password" placeholder='סיסמא...' value={password} name='password' onChange={change} required />
 
