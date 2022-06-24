@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { addToStorage, updateExistingDoc } from '../../firebase-config/firebase';
+import { userContext } from '../provider/userProvider';
 import { useNavigate } from 'react-router-dom';
 import FormInput from "../form-input/form-input-component"
 import Select from '../select/Select'
@@ -12,10 +13,10 @@ const AddRoom = () => {
     const [formInput, setFormInput] = useState(roomInfo);
     const [file, setFile] = useState(null);
     const { roomName, extension } = formInput;
+    const { currentUser } = useContext(userContext);
     const navigate = useNavigate();
 
     const change = (e) => {
-
         const { name, value } = e.target;
         setFormInput({ ...formInput, [name]: value });
     }
@@ -27,22 +28,27 @@ const AddRoom = () => {
     const submit = async (e) => {
         e.preventDefault();
 
-        try {
+        if (currentUser.isAdmin || (currentUser.BuildManager && currentUser.extension === extension)) {
 
-            const url = await addToStorage(file);
-            await updateExistingDoc("rooms", extension, { ...formInput, imageUrl: url });
-            setFormInput(roomInfo);
-            setFile(null);
-            navigate('../');
+            try {
 
-        } catch (error) {
-            console.log(error.message);
+                const url = await addToStorage(file);
+                await updateExistingDoc("rooms", extension, { ...formInput, imageUrl: url });
+                setFormInput(roomInfo);
+                setFile(null);
+                navigate('../');
+
+            } catch (error) {
+                console.log(error.message);
+            }
+        }else{
+            alert("No permission");
         }
     }
 
 
     return (
-        
+
         <form className='add-event-form' onSubmit={submit}>
 
             <h1>חדר חדש</h1>

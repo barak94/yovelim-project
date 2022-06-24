@@ -62,7 +62,7 @@ const Facility = () => {
                         <img src={room.imageUrl} alt={room.roomName} />
                         <h4>{room.roomName}</h4>
                         {!currentUser && <Button text="שלח בקשה" onClick={() => { navigateHandles(room) }} />}
-                        {currentUser && (currentUser.isAdmin || currentUser.BuildManager) &&
+                        {currentUser && (currentUser.isAdmin || (currentUser.BuildManager && currentUser.extension === name)) &&
                          <Button text="מחק חדר" onClick={()=> {setRoomInfo(room); setDeleted(true);}} />}
                     </div>)}
 
